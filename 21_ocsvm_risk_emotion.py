@@ -4,28 +4,37 @@ import numpy as np
 import pandas as pd
 
 BASE_DIR = Path(__file__).resolve().parent
-TRAIN_SCORE_FILE = BASE_DIR / "final_one_class_svm_train_scores.csv"
+VALIDATION_SCORE_FILE = BASE_DIR / "one_class_svm_best_validation_scores.csv"
 SCORE_FILE = BASE_DIR / "final_one_class_svm_anomaly_scores.csv"
 THRESHOLD_FILE = BASE_DIR / "final_one_class_svm_threshold.json"
 OUTPUT_FILE = BASE_DIR / "final_one_class_svm_risk_emotion.csv"
 THRESHOLD_OUT = BASE_DIR / "final_one_class_svm_risk_thresholds.json"
 ANALYSIS_FILE = BASE_DIR / "final_one_class_svm_risk_summary.csv"
 
-for p in [TRAIN_SCORE_FILE, SCORE_FILE, THRESHOLD_FILE]:
+for p in [VALIDATION_SCORE_FILE, SCORE_FILE, THRESHOLD_FILE]:
     if not p.exists():
         raise FileNotFoundError(f"ไม่พบไฟล์: {p}")
 
-train_scores = pd.read_csv(TRAIN_SCORE_FILE)
+validation_scores = pd.read_csv(VALIDATION_SCORE_FILE)
 scores = pd.read_csv(SCORE_FILE)
 model_cfg = json.loads(THRESHOLD_FILE.read_text(encoding="utf-8"))
 
-if "anomaly_score" not in train_scores.columns or "anomaly_score" not in scores.columns:
+if "anomaly_score" not in validation_scores.columns or "anomaly_score" not in scores.columns:
     raise ValueError("Score files ต้องมี anomaly_score")
 
-# Risk thresholds are calibrated from TRAIN BENIGN only.
-benign_scores = pd.to_numeric(train_scores["anomaly_score"], errors="coerce").dropna()
+# Risk thresholds are calibrated from VALIDATION BENIGN only.
+if "target" not in validation_scores.columns:
+    raise ValueError("Validation score file ต้องมี column target")
+
+validation_benign = validation_scores[
+    validation_scores["target"].astype(int) == 0
+].copy()
+
+benign_scores = pd.to_numeric(
+    validation_benign["anomaly_score"], errors="coerce"
+).dropna()
 if len(benign_scores) == 0:
-    raise ValueError("ไม่มี TRAIN BENIGN anomaly score")
+    raise ValueError("ไม่มี VALIDATION BENIGN anomaly score")
 
 p60, p80, p90, p95 = [
     float(np.percentile(benign_scores, p)) for p in [60, 80, 90, 95]
@@ -49,7 +58,7 @@ result.to_csv(OUTPUT_FILE, index=False)
 
 thresholds = {
     "risk_p60": p60, "risk_p80": p80, "risk_p90": p90, "risk_p95": p95,
-    "source": "TRAIN BENIGN anomaly scores only",
+    "source": "VALIDATION BENIGN anomaly scores only",
     "detection_threshold": float(model_cfg.get("threshold", model_cfg.get("final_threshold"))),
 }
 THRESHOLD_OUT.write_text(json.dumps(thresholds, indent=2), encoding="utf-8")
@@ -72,11 +81,13 @@ print("=" * 80)
 print("STAGE 21 — OCSVM NETWORK RISK / EMOTION")
 print("=" * 80)
 print(f"Final Test rows : {len(result):,}")
+print(f"Validation rows : {len(validation_scores):,}")
 print(f"Risk P60        : {p60:.10f}")
 print(f"Risk P80        : {p80:.10f}")
 print(f"Risk P90        : {p90:.10f}")
 print(f"Risk P95        : {p95:.10f}")
-print("Risk source     : TRAIN BENIGN only")
+print(f"Validation BENIGN used for thresholds: {len(validation_benign):,}")
+print("Risk source     : VALIDATION BENIGN only")
 print(f"Saved           : {OUTPUT_FILE}")
 print(f"Saved thresholds: {THRESHOLD_OUT}")
 print("=" * 80)
