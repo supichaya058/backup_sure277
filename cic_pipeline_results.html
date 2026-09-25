@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIC-IDS2017 Pipeline — Stage 01-29 + 39 + 40</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 24px;
+    background: #f4f4f4;
+    color: #222;
+}
+.container {
+    max-width: 1500px;
+    margin: auto;
+}
+header {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+section {
+    background: #fff;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+h2 {
+    margin: 0;
+    padding: 14px 18px;
+    font-size: 17px;
+}
+.ok {
+    background: #e9f7ec;
+    color: #1f6b2b;
+}
+.fail {
+    background: #fdeaea;
+    color: #9b1c1c;
+}
+.pre {
+    margin: 0;
+    padding: 16px;
+    background: #0f1115;
+    color: #e8e8e8;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    line-height: 1.4;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+.badge {
+    float: right;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #fff;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>CIC-IDS2017 Pipeline — Stage 01-29 + 39 + 40</h1>
+<div>Status: COMPLETED</div>
+<div>Generated: 2026-09-25 20:14:26</div>
+</header>
+<section><h2 class="ok">[1/31] 01_check_data.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 RAW DATA CHECK
+================================================================================
+Raw input pattern : *-WorkingHours*.pcap_ISCX.csv
+Raw files found   : 8
+
+Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+  Rows    : 225,745
+  Columns : 79
+  Size MB : 73.55
+  Labels  :
+    DDoS                                     128,027
+    BENIGN                                    97,718
+
+Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+  Rows    : 286,467
+  Columns : 79
+  Size MB : 73.34
+  Labels  :
+    PortScan                                 158,930
+    BENIGN                                   127,537
+
+Friday-WorkingHours-Morning.pcap_ISCX.csv
+  Rows    : 191,033
+  Columns : 79
+  Size MB : 55.62
+  Labels  :
+    BENIGN                                   189,067
+    Bot                                        1,966
+
+Monday-WorkingHours.pcap_ISCX.csv
+  Rows    : 529,918
+  Columns : 79
+  Size MB : 168.73
+  Labels  :
+    BENIGN                                   529,918
+
+Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+  Rows    : 288,602
+  Columns : 79
+  Size MB : 79.25
+  Labels  :
+    BENIGN                                   288,566
+    Infiltration                                  36
+
+Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+  Rows    : 170,366
+  Columns : 79
+  Size MB : 49.61
+  Labels  :
+    BENIGN                                   168,186
+    Web Attack � Brute Force                   1,507
+    Web Attack � XSS                             652
+    Web Attack � Sql Injection                    21
+
+Tuesday-WorkingHours.pcap_ISCX.csv
+  Rows    : 445,909
+  Columns : 79
+  Size MB : 128.82
+  Labels  :
+    BENIGN                                   432,074
+    FTP-Patator                                7,938
+    SSH-Patator                                5,897
+
+Wednesday-workingHours.pcap_ISCX.csv
+  Rows    : 692,703
+  Columns : 79
+  Size MB : 214.74
+  Labels  :
+    BENIGN                                   440,031
+    DoS Hulk                                 231,073
+    DoS GoldenEye                             10,293
+    DoS slowloris                              5,796
+    DoS Slowhttptest                           5,499
+    Heartbleed                                    11
+
+================================================================================
+RAW DATA TOTAL
+================================================================================
+Files : 8
+Rows  : 2,830,743
+================================================================================
+</div></section><section><h2 class="ok">[2/31] 02_inspect_data.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 RAW DATA INSPECTION
+================================================================================
+Files: 8
+
+================================================================================
+FILE: Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 225,745
+Labels:
+  DDoS                                     128,027 ( 56.71%)
+  BENIGN                                    97,718 ( 43.29%)
+
+================================================================================
+FILE: Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 286,467
+Labels:
+  PortScan                                 158,930 ( 55.48%)
+  BENIGN                                   127,537 ( 44.52%)
+
+================================================================================
+FILE: Friday-WorkingHours-Morning.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 191,033
+Labels:
+  BENIGN                                   189,067 ( 98.97%)
+  Bot                                        1,966 (  1.03%)
+
+================================================================================
+FILE: Monday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 529,918
+Labels:
+  BENIGN                                   529,918 (100.00%)
+
+================================================================================
+FILE: Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 288,602
+Labels:
+  BENIGN                                   288,566 ( 99.99%)
+  Infiltration                                  36 (  0.01%)
+
+================================================================================
+FILE: Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 170,366
+Labels:
+  BENIGN                                   168,186 ( 98.72%)
+  Web Attack � Brute Force                   1,507 (  0.88%)
+  Web Attack � XSS                             652 (  0.38%)
+  Web Attack � Sql Injection                    21 (  0.01%)
+
+================================================================================
+FILE: Tuesday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 445,909
+Labels:
+  BENIGN                                   432,074 ( 96.90%)
+  FTP-Patator                                7,938 (  1.78%)
+  SSH-Patator                                5,897 (  1.32%)
+
+================================================================================
+FILE: Wednesday-workingHours.pcap_ISCX.csv
+================================================================================
+Columns: 79
+Column names:
+  01. Destination Port
+  02. Flow Duration
+  03. Total Fwd Packets
+  04. Total Backward Packets
+  05. Total Length of Fwd Packets
+  06. Total Length of Bwd Packets
+  07. Fwd Packet Length Max
+  08. Fwd Packet Length Min
+  09. Fwd Packet Length Mean
+  10. Fwd Packet Length Std
+  11. Bwd Packet Length Max
+  12. Bwd Packet Length Min
+  13. Bwd Packet Length Mean
+  14. Bwd Packet Length Std
+  15. Flow Bytes/s
+  16. Flow Packets/s
+  17. Flow IAT Mean
+  18. Flow IAT Std
+  19. Flow IAT Max
+  20. Flow IAT Min
+  21. Fwd IAT Total
+  22. Fwd IAT Mean
+  23. Fwd IAT Std
+  24. Fwd IAT Max
+  25. Fwd IAT Min
+  26. Bwd IAT Total
+  27. Bwd IAT Mean
+  28. Bwd IAT Std
+  29. Bwd IAT Max
+  30. Bwd IAT Min
+  31. Fwd PSH Flags
+  32. Bwd PSH Flags
+  33. Fwd URG Flags
+  34. Bwd URG Flags
+  35. Fwd Header Length
+  36. Bwd Header Length
+  37. Fwd Packets/s
+  38. Bwd Packets/s
+  39. Min Packet Length
+  40. Max Packet Length
+  41. Packet Length Mean
+  42. Packet Length Std
+  43. Packet Length Variance
+  44. FIN Flag Count
+  45. SYN Flag Count
+  46. RST Flag Count
+  47. PSH Flag Count
+  48. ACK Flag Count
+  49. URG Flag Count
+  50. CWE Flag Count
+  51. ECE Flag Count
+  52. Down/Up Ratio
+  53. Average Packet Size
+  54. Avg Fwd Segment Size
+  55. Avg Bwd Segment Size
+  56. Fwd Header Length.1
+  57. Fwd Avg Bytes/Bulk
+  58. Fwd Avg Packets/Bulk
+  59. Fwd Avg Bulk Rate
+  60. Bwd Avg Bytes/Bulk
+  61. Bwd Avg Packets/Bulk
+  62. Bwd Avg Bulk Rate
+  63. Subflow Fwd Packets
+  64. Subflow Fwd Bytes
+  65. Subflow Bwd Packets
+  66. Subflow Bwd Bytes
+  67. Init_Win_bytes_forward
+  68. Init_Win_bytes_backward
+  69. act_data_pkt_fwd
+  70. min_seg_size_forward
+  71. Active Mean
+  72. Active Std
+  73. Active Max
+  74. Active Min
+  75. Idle Mean
+  76. Idle Std
+  77. Idle Max
+  78. Idle Min
+  79. Label
+
+Total Rows: 692,703
+Labels:
+  BENIGN                                   440,031 ( 63.52%)
+  DoS Hulk                                 231,073 ( 33.36%)
+  DoS GoldenEye                             10,293 (  1.49%)
+  DoS slowloris                              5,796 (  0.84%)
+  DoS Slowhttptest                           5,499 (  0.79%)
+  Heartbleed                                    11 (  0.00%)
+
+================================================================================
+INSPECTION COMPLETE
+================================================================================
+หมายเหตุ: Stage 04 จะวิเคราะห์ raw-flow features เชิงข้อมูล
+ส่วน feature selection สำหรับโมเดล Behavior จะทำจาก TRAIN เท่านั้นใน Stage 08
+</div></section><section><h2 class="ok">[3/31] 03_clean_data.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 CLEANING CHECK
+================================================================================
+Files checked: 8
+
+================================================================================
+FILE: Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+================================================================================
+Rows       : 225,745
+Missing    : 4
+Infinity   : 64
+================================================================================
+FILE: Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+================================================================================
+Rows       : 286,467
+Missing    : 15
+Infinity   : 727
+================================================================================
+FILE: Friday-WorkingHours-Morning.pcap_ISCX.csv
+================================================================================
+Rows       : 191,033
+Missing    : 28
+Infinity   : 216
+================================================================================
+FILE: Monday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Rows       : 529,918
+Missing    : 64
+Infinity   : 810
+================================================================================
+FILE: Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+================================================================================
+Rows       : 288,602
+Missing    : 18
+Infinity   : 396
+================================================================================
+FILE: Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+================================================================================
+Rows       : 170,366
+Missing    : 20
+Infinity   : 250
+================================================================================
+FILE: Tuesday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Rows       : 445,909
+Missing    : 201
+Infinity   : 327
+================================================================================
+FILE: Wednesday-workingHours.pcap_ISCX.csv
+================================================================================
+Rows       : 692,703
+Missing    : 1,008
+Infinity   : 1,586
+================================================================================
+TOTAL
+================================================================================
+Rows       : 2,830,743
+Missing    : 1,358
+Infinity   : 4,376
+================================================================================
+Cleaning policy used by Stage 05:
+- Numeric Inf -&gt; NaN
+- Missing numeric values -&gt; 0
+- Empty/missing labels -&gt; discarded
+- No generated CSV is treated as a raw input
+================================================================================
+</div></section><section><h2 class="ok">[4/31] 04_feature_analysis.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 RAW FLOW FEATURE ANALYSIS
+================================================================================
+Files: 8
+
+Stage นี้เป็น diagnostic ของ raw-flow data เท่านั้น
+จะไม่สร้าง selected_features.csv และไม่ป้อน feature list ให้ Behavior Model
+Behavior-level feature selection จะทำจาก TRAIN เท่านั้นใน Stage 08
+
+Sampled raw-flow rows : 40,000
+Numeric features      : 78
+
+Saved: raw_flow_feature_summary.csv
+Saved: raw_flow_correlation_matrix.csv
+
+Stage 04 COMPLETE
+</div></section><section><h2 class="ok">[5/31] 05_create_behavior_features.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 - CREATE 13 BEHAVIORAL FEATURES
+================================================================================
+Input files : 8
+Window size : 50 flows
+Window type : flow-based
+Mixed rule  : discard mixed BENIGN + ATTACK
+Partial rule: discard incomplete windows
+
+
+================================================================================
+PROCESSING: Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+================================================================================
+Flow rows               : 225,745
+Behavior windows        : 4,471
+Mixed windows discarded : 43
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+================================================================================
+Flow rows               : 286,467
+Behavior windows        : 4,207
+Mixed windows discarded : 1,522
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Friday-WorkingHours-Morning.pcap_ISCX.csv
+================================================================================
+Flow rows               : 191,033
+Behavior windows        : 3,187
+Mixed windows discarded : 633
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Monday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Flow rows               : 529,918
+Behavior windows        : 10,598
+Mixed windows discarded : 0
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+================================================================================
+Flow rows               : 288,602
+Behavior windows        : 5,737
+Mixed windows discarded : 35
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+================================================================================
+Flow rows               : 170,366
+Behavior windows        : 2,671
+Mixed windows discarded : 736
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Tuesday-WorkingHours.pcap_ISCX.csv
+================================================================================
+Flow rows               : 445,909
+Behavior windows        : 5,356
+Mixed windows discarded : 3,562
+Partial window discarded: 1
+
+================================================================================
+PROCESSING: Wednesday-workingHours.pcap_ISCX.csv
+================================================================================
+Flow rows               : 692,703
+Behavior windows        : 6,606
+Mixed windows discarded : 7,248
+Partial window discarded: 1
+
+================================================================================
+13 BEHAVIORAL FEATURE AVAILABILITY
+================================================================================
+     group         feature      status  non_null_rows  total_rows  model_eligible
+    Volume    Request Rate   AVAILABLE          42833       42833            True
+    Volume  Total Requests   AVAILABLE          42833       42833            True
+    Volume      Throughput   AVAILABLE          42833       42833            True
+    Volume      Flow Count   AVAILABLE          42833       42833            True
+     Error      Error Rate UNAVAILABLE              0       42833           False
+     Error       4xx Count UNAVAILABLE              0       42833           False
+     Error       5xx Count UNAVAILABLE              0       42833           False
+   Latency     Avg Latency   AVAILABLE          42833       42833            True
+   Latency     Max Latency   AVAILABLE          42833       42833            True
+   Latency Latency Std Dev   AVAILABLE          42833       42833            True
+    Source Unique IP Count UNAVAILABLE              0       42833           False
+    Source    New IP Ratio UNAVAILABLE              0       42833           False
+Connection Active Sessions UNAVAILABLE              0       42833           False
+
+Total behavior windows : 42,833
+
+Saved:
+  behavior_features.csv
+  behavior_13_feature_definition.csv
+  behavior_13_feature_availability.csv
+  behavior_summary.csv
+================================================================================
+</div></section><section><h2 class="ok">[6/31] 06_create_behavior_dataset.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 BEHAVIOR DATASET
+================================================================================
+Input rows   : 42,833
+Input columns: 29
+
+13-framework feature status:
+  request_rate             AVAILABLE
+  total_requests           AVAILABLE
+  throughput               AVAILABLE
+  flow_count_feature       AVAILABLE
+  error_rate               UNAVAILABLE
+  4xx_count                UNAVAILABLE
+  5xx_count                UNAVAILABLE
+  avg_latency              AVAILABLE
+  max_latency              AVAILABLE
+  latency_std_dev          AVAILABLE
+  unique_ip_count          UNAVAILABLE
+  new_ip_ratio             UNAVAILABLE
+  active_sessions          UNAVAILABLE
+
+Features available for dataset/model:
+  - request_rate
+  - total_requests
+  - throughput
+  - flow_count_feature
+  - avg_latency
+  - max_latency
+  - latency_std_dev
+
+Features unavailable in current CIC CSV:
+  - error_rate
+  - 4xx_count
+  - 5xx_count
+  - unique_ip_count
+  - new_ip_ratio
+  - active_sessions
+
+================================================================================
+BEHAVIOR DATASET RESULT
+================================================================================
+Behavior rows : 42,833
+Available features : 7
+
+Available Behavioral Features:
+  1. request_rate
+  2. total_requests
+  3. throughput
+  4. flow_count_feature
+  5. avg_latency
+  6. max_latency
+  7. latency_std_dev
+
+หมายเหตุ:
+  13-feature framework ยังคงอยู่ในไฟล์ 05
+  แต่ behavior_dataset.csv จะเก็บเฉพาะ feature ที่ CIC สังเกตได้จริง
+  Feature selection สำหรับ Model ยังทำใน Stage 08 จาก TRAIN เท่านั้น
+
+Saved:
+  behavior_dataset.csv
+  behavior_descriptive_features.csv
+  behavior_correlation_matrix.csv
+  behavior_feature_summary.csv
+  behavior_model_features.csv
+================================================================================
+</div></section><section><h2 class="ok">[7/31] 07_split_normal_attack.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+CIC-IDS2017 STAGE 07 — CLEAN GROUP-BASED SPLIT
+==========================================================================================
+Total          : 42,833
+Train          : 24,878  (BENIGN only)
+Validation     : 8,678  {0: 4276, 1: 4402}
+Final Test     : 9,277  {0: 7748, 1: 1529}
+
+Train groups   : [&#x27;Friday-WorkingHours-Morning.pcap_ISCX.csv&#x27;, &#x27;Monday-WorkingHours.pcap_ISCX.csv&#x27;, &#x27;Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv&#x27;, &#x27;Tuesday-WorkingHours.pcap_ISCX.csv&#x27;]
+Validation     : [&#x27;Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv&#x27;, &#x27;Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv&#x27;]
+Final Test     : [&#x27;Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv&#x27;, &#x27;Wednesday-workingHours.pcap_ISCX.csv&#x27;]
+
+Group overlap  : PASS
+Train ATTACK   : PASS (0)
+Attack pool is NOT used to construct Final Test.
+==========================================================================================
+</div></section><section><h2 class="ok">[8/31] 08_train_models.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 BEHAVIOR MODEL TRAINING
+SAME MODEL WORKFLOW AS THE OTHER DATASET
+================================================================================
+Train rows              : 24,878
+Candidate features      : 8
+
+================================================================================
+FEATURE SELECTION - TRAIN ONLY
+================================================================================
+Constant removed        : 3
+Correlation removed     : 0
+Final model features    : 5
+
+01. request_rate
+02. throughput
+03. avg_latency
+04. max_latency
+05. latency_std_dev
+
+================================================================================
+TRAINING ISOLATION FOREST
+================================================================================
+n_estimators  : 300
+contamination : 0.01
+random_state  : 42
+n_jobs        : -1
+Saved: anomaly_model.pkl
+Saved: behavior_isolation_forest.pkl
+================================================================================
+TRAINING ONE-CLASS SVM
+================================================================================
+kernel : rbf
+nu     : 0.01
+gamma  : scale
+Saved: ocsvm_model.pkl
+
+Selected features saved : selected_features.json
+Config saved             : behavior_tuning_config.json
+================================================================================
+STAGE 08 SAME-WORKFLOW TRAINING COMPLETE
+================================================================================
+</div></section><section><h2 class="ok">[9/31] 09_create_test_dataset.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 STAGE 09 — FINAL TEST READY
+================================================================================
+Final Test rows : 9,277
+BENIGN          : 7,748
+ATTACK          : 1,529
+Attack sampling : NO
+Final Test used : evaluation only
+Saved            : D:\project277\test_dataset.csv
+================================================================================
+</div></section><section><h2 class="ok">[10/31] 10_check_n_estimators.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 10 — IF N_ESTIMATORS TUNING (VALIDATION ONLY)
+==========================================================================================
+ n_estimators  contamination  threshold_percentile  threshold  accuracy  precision   recall       f1      fpr   tn  fp   fn   tp
+          100           0.01                    95  -0.092765  0.730007   0.913953 0.516356 0.659893 0.050047 4062 214 2129 2273
+          200           0.01                    95  -0.097979  0.725282   0.912510 0.507042 0.651869 0.050047 4062 214 2170 2232
+          300           0.01                    95  -0.098608  0.725398   0.912546 0.507269 0.652066 0.050047 4062 214 2169 2233
+          500           0.01                    95  -0.094202  0.723093   0.911825 0.502726 0.648118 0.050047 4062 214 2189 2213
+          700           0.01                    95  -0.097990  0.723439   0.911934 0.503408 0.648712 0.050047 4062 214 2186 2216
+         1000           0.01                    95  -0.094385  0.721134   0.911203 0.498864 0.644745 0.050047 4062 214 2206 2196
+
+Best: 100 threshold= -0.09276462 F1= 0.6599
+Final Test used for tuning: NO
+</div></section><section><h2 class="ok">[11/31] 11_check_samples_features.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 11 — IF MAX_SAMPLES / MAX_FEATURES TUNING (VALIDATION ONLY)
+==========================================================================================
+ n_estimators max_samples  max_features  contamination  threshold_percentile  threshold  accuracy  precision   recall       f1      fpr   tn  fp   fn   tp
+          100        auto           1.0           0.01                    95  -0.092765  0.730007   0.913953 0.516356 0.659893 0.050047 4062 214 2129 2273
+          100        auto           0.8           0.01                    95  -0.065607  0.723323   0.911898 0.503180 0.648514 0.050047 4062 214 2187 2215
+          100         0.5           1.0           0.01                    95  -0.004150  0.574556   0.811951 0.209905 0.333574 0.050047 4062 214 3478  924
+          100         0.5           0.8           0.01                    95  -0.011146  0.569717   0.804745 0.200363 0.320844 0.050047 4062 214 3520  882
+          100         0.8           1.0           0.01                    95   0.012614  0.566260   0.799250 0.193548 0.311631 0.050047 4062 214 3550  852
+          100         0.8           0.8           0.01                    95  -0.010380  0.567181   0.800745 0.195366 0.314098 0.050047 4062 214 3542  860
+
+Best: {
+  &quot;n_estimators&quot;: 100,
+  &quot;max_samples&quot;: &quot;auto&quot;,
+  &quot;max_features&quot;: 1.0,
+  &quot;contamination&quot;: 0.01,
+  &quot;threshold_percentile&quot;: 95,
+  &quot;threshold&quot;: -0.0927646172578778,
+  &quot;accuracy&quot;: 0.730006914035492,
+  &quot;precision&quot;: 0.9139525532770406,
+  &quot;recall&quot;: 0.516356201726488,
+  &quot;f1&quot;: 0.6598925823777035,
+  &quot;fpr&quot;: 0.050046772684752105,
+  &quot;tn&quot;: 4062,
+  &quot;fp&quot;: 214,
+  &quot;fn&quot;: 2129,
+  &quot;tp&quot;: 2273,
+  &quot;selection_data&quot;: &quot;VALIDATION&quot;,
+  &quot;final_test_used_for_tuning&quot;: false
+}
+Final Test used for tuning: NO
+</div></section><section><h2 class="ok">[12/31] 12_final_models.py <span class="badge">OK</span></h2><div class="pre">=====================================================================================
+STAGE 12 — FINAL ISOLATION FOREST
+=====================================================================================
+Train BENIGN: 24878
+n_estimators: 100
+max_samples: auto
+max_features: 1.0
+Validation threshold: -0.0927646172578778
+Final Test used: NO
+
+=====================================================================================
+FINAL MODEL VALIDATION VERIFICATION
+=====================================================================================
+Validation rows : 8,678
+Accuracy        : 0.7300
+Precision       : 0.9140
+Recall          : 0.5164
+F1 Score        : 0.6599
+FPR             : 0.0500
+
+Confusion Matrix
+[[4062  214]
+ [2129 2273]]
+TN : 4,062
+FP : 214
+FN : 2,129
+TP : 2,273
+
+Saved validation scores  : final_if_validation_scores.csv
+Saved validation metrics : final_if_validation_metrics.csv
+Saved final model        : final_anomaly_model.pkl
+=====================================================================================
+STAGE 12 FINAL ISOLATION FOREST COMPLETE
+=====================================================================================
+</div></section><section><h2 class="ok">[13/31] 13_anomaly_score.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 13 — IF FINAL TEST SCORE
+================================================================================
+Final Test: 9277
+Score calibration: TRAIN BENIGN only
+Final Test used to calibrate score: NO
+Saved: D:\project277\anomaly_scores.csv
+</div></section><section><h2 class="ok">[14/31] 14_network_emotion.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 14 — NETWORK EMOTION
+================================================================================
+Final Test rows: 9277
+Interpretation only; no tuning.
+Saved: D:\project277\emotion_results.csv
+</div></section><section><h2 class="ok">[15/31] 15_final_analysis.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+CIC-IDS2017 — STAGE 15: FINAL ISOLATION FOREST TEST EVALUATION
+==========================================================================================
+
+[FINAL TEST]
+  Total rows       : 9,277
+  BENIGN           : 7,748
+  ATTACK           : 1,529
+
+[LOCKED CONFIGURATION — FROM VALIDATION]
+  n_estimators     : 100
+  max_samples      : auto
+  max_features     : 1.0
+  contamination    : 0.01
+  threshold pct    : 95
+  threshold        : -0.0927646173
+
+[FINAL TEST PERFORMANCE]
+         Metric  Value
+       Accuracy 0.9049
+      Precision 0.7141
+         Recall 0.7057
+       F1 Score 0.7099
+    Overall FAR 0.0558
+Normal-only FAR 0.0558
+        ROC-AUC 0.9575
+         PR-AUC 0.8027
+
+[CONFUSION MATRIX]
+                  Pred Normal   Pred Attack
+Actual BENIGN           7,316           432
+Actual ATTACK             450         1,079
+
+[PREDICTION SUMMARY]
+  Predicted Normal : 7,766
+  Predicted Anomaly: 1,511
+
+[ATTACK-TYPE DETECTION]
+     attack_type  samples  detected mean_score  missed detection_rate
+DoS Slowhttptest       88        69  -0.067936      19         78.41%
+        DoS Hulk     1399       984  -0.048361     415         70.34%
+   DoS slowloris       38        24  -0.077034      14         63.16%
+   DoS GoldenEye        2         1  -0.104630       1         50.00%
+MULTIPLE_ATTACKS        2         1  -0.078886       1         50.00%
+
+[DATA USAGE]
+  Final Test used for evaluation : YES
+  Final Test used for tuning    : NO
+  Threshold source              : Validation
+  Score calibration source      : Train BENIGN only
+
+[SAVED FILES]
+  D:\project277\final_behavior_metrics.csv
+  D:\project277\final_behavior_analysis_summary.txt
+  D:\project277\attack_type_analysis.csv
+==========================================================================================
+STAGE 15 COMPLETE
+==========================================================================================
+</div></section><section><h2 class="ok">[16/31] 16_one_class_svm_behavior.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 ONE-CLASS SVM BEHAVIOR MODEL
+================================================================================
+Validation integrity check : PASS (8,678 rows)
+
+Train rows       : 24,878
+Validation rows  : 8,678
+Features         : 5
+Train BENIGN     : 24,878
+Train ATTACK     : 0
+Validation BENIGN: 4,276
+Validation ATTACK: 4,402
+
+================================================================================
+BASELINE ONE-CLASS SVM PARAMETERS
+================================================================================
+kernel       : rbf
+nu           : 0.01
+gamma        : scale
+cache_size   : 4096 MB
+shrinking    : True
+train sample : ALL
+Final Test   : NOT USED
+
+================================================================================
+TRAINING ONE-CLASS SVM
+================================================================================
+One-Class SVM training complete.
+
+Model saved: D:\project277\one_class_svm_behavior_baseline.pkl
+
+================================================================================
+VALIDATION EVALUATION
+================================================================================
+Accuracy  : 0.6172
+Precision : 0.9334
+Recall    : 0.2642
+F1 Score  : 0.4118
+False Positive Rate : 0.0194
+Attack Detection Rate : 0.2642
+
+Confusion Matrix
+[[4193   83]
+ [3239 1163]]
+
+TN : 4,193
+FP : 83
+FN : 3,239
+TP : 1,163
+
+================================================================================
+PREDICTION DISTRIBUTION
+================================================================================
+Predicted Normal  : 7,432
+Predicted Anomaly : 1,246
+
+Actual BENIGN     : 4,276
+Actual ATTACK     : 4,402
+
+================================================================================
+VALIDATION ANOMALY SCORE SUMMARY
+================================================================================
+Min    : -5.136358
+Max    : 23.149937
+Mean   : -1.319715
+Median : -1.449635
+Std    : 2.299996
+
+================================================================================
+SCORE BY TARGET
+================================================================================
+
+BENIGN
+Count  : 4,276
+Mean   : -1.700048
+Median : -1.823448
+Min    : -5.136358
+Max    : 23.149937
+
+ATTACK
+Count  : 4,402
+Mean   : -0.950268
+Median : -0.976376
+Min    : -4.606368
+Max    : 2.619404
+
+================================================================================
+ONE-CLASS SVM BASELINE COMPLETE
+================================================================================
+Model file      : D:\project277\one_class_svm_behavior_baseline.pkl
+Validation file : D:\project277\one_class_svm_validation_scores.csv
+Summary file    : D:\project277\one_class_svm_baseline_summary.txt
+
+Stage 16 used Validation only. Final Test was not used.
+Ready for One-Class SVM hyperparameter / threshold tuning.
+================================================================================
+</div></section><section><h2 class="ok">[17/31] 17_tune_ocsvm_threshold.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 ONE-CLASS SVM BEHAVIOR MODEL
+================================================================================
+Validation integrity check : PASS (8,678 rows)
+
+Train rows       : 24,878
+Validation rows  : 8,678
+Features         : 5
+Train BENIGN     : 24,878
+Train ATTACK     : 0
+Validation BENIGN: 4,276
+Validation ATTACK: 4,402
+
+================================================================================
+ONE-CLASS SVM HYPERPARAMETER / THRESHOLD TUNING
+================================================================================
+Kernel                 : rbf
+nu candidates          : [0.001, 0.005, 0.01, 0.03, 0.05, 0.1]
+gamma candidates       : [&#x27;scale&#x27;, 0.001, 0.01, 0.1, 1.0]
+Threshold percentiles  : [20, 30, 40, 50, 60, 70, 75, 80, 85, 90, 92, 95, 97, 99]
+cache_size             : 4096 MB
+shrinking              : True
+train sample           : ALL
+Final Test             : NOT USED
+
+================================================================================
+RUNNING ONE-CLASS SVM THRESHOLD TUNING
+================================================================================
+Fixed nu                : 0.01
+Fixed gamma             : scale
+Threshold percentiles   : [20, 30, 40, 50, 60, 70, 75, 80, 85, 90, 92, 95, 97, 99]
+Native threshold       : 0.0
+Final Test             : NOT USED
+
+================================================================================
+TRAINING STAGE 16 BASELINE OCSVM FOR THRESHOLD CALIBRATION
+================================================================================
+Baseline validation model saved: D:\project277\one_class_svm_threshold_baseline_validation.pkl
+
+Validation score min   : -5.13635775
+Validation score max   : 23.14993709
+Validation score std   : 2.29999551
+Validation BENIGN score count: 4,276
+
+Threshold native     pct=  0.0 value= 0.00000000 | Precision=0.9334 | Recall=0.2642 | F1=0.4118 | FPR=0.0194
+Threshold percentile pct= 20.0 value=-3.24768755 | Precision=0.5607 | Recall=0.9920 | F1=0.7165 | FPR=0.8000
+Threshold percentile pct= 30.0 value=-2.82491730 | Precision=0.5627 | Recall=0.8751 | F1=0.6850 | FPR=0.7000
+Threshold percentile pct= 40.0 value=-2.24197393 | Precision=0.5633 | Recall=0.7519 | F1=0.6441 | FPR=0.6001
+Threshold percentile pct= 50.0 value=-1.82344833 | Precision=0.5919 | Recall=0.7045 | F1=0.6433 | FPR=0.5000
+Threshold percentile pct= 60.0 value=-1.49678948 | Precision=0.6144 | Recall=0.6193 | F1=0.6168 | FPR=0.4001
+Threshold percentile pct= 70.0 value=-1.16015011 | Precision=0.6556 | Recall=0.5547 | F1=0.6010 | FPR=0.3000
+Threshold percentile pct= 75.0 value=-0.97474801 | Precision=0.6729 | Recall=0.4995 | F1=0.5734 | FPR=0.2500
+Threshold percentile pct= 80.0 value=-0.76385471 | Precision=0.6884 | Recall=0.4296 | F1=0.5290 | FPR=0.2002
+Threshold percentile pct= 85.0 value=-0.52233902 | Precision=0.7173 | Recall=0.3701 | F1=0.4882 | FPR=0.1501
+Threshold percentile pct= 90.0 value=-0.27106088 | Precision=0.7602 | Recall=0.3083 | F1=0.4387 | FPR=0.1001
+Threshold percentile pct= 92.0 value=-0.19828736 | Precision=0.7911 | Recall=0.2951 | F1=0.4298 | FPR=0.0802
+Threshold percentile pct= 95.0 value=-0.09873640 | Precision=0.8515 | Recall=0.2787 | F1=0.4200 | FPR=0.0500
+Threshold percentile pct= 97.0 value=-0.03765595 | Precision=0.9018 | Recall=0.2690 | F1=0.4143 | FPR=0.0302
+Threshold percentile pct= 99.0 value= 21.53381353 | Precision=0.0000 | Recall=0.0000 | F1=0.0000 | FPR=0.0101
+
+
+================================================================================
+BEST ONE-CLASS SVM THRESHOLD
+================================================================================
+Selection constraint : Normal-only FAR &lt;= 15%
+Eligible thresholds  : 6 / 15
+nu                    : 0.01
+gamma                 : scale
+threshold type        : percentile
+threshold percentile  : 90
+threshold             : -0.27106088
+
+Validation Accuracy   : 0.5998
+Validation Precision  : 0.7602
+Validation Recall     : 0.3083
+Validation F1         : 0.4387
+Validation FPR        : 0.1001
+Attack Detection Rate: 0.3083
+
+TN : 3,848
+FP : 428
+FN : 3,045
+TP : 1,357
+
+================================================================================
+TRAINING BEST VALIDATION OCSVM
+================================================================================
+nu    : 0.01
+gamma : scale
+
+Best validation model saved: D:\project277\one_class_svm_threshold_baseline_validation.pkl
+
+Best configuration saved: D:\project277\one_class_svm_threshold_config.json
+
+================================================================================
+ONE-CLASS SVM THRESHOLD TUNING COMPLETE
+================================================================================
+Threshold result file : D:\project277\one_class_svm_threshold_tuning_results.csv
+Baseline model file : D:\project277\one_class_svm_threshold_baseline_validation.pkl
+Threshold config file: D:\project277\one_class_svm_threshold_config.json
+Validation score file: D:\project277\one_class_svm_threshold_validation_scores.csv
+Summary file       : D:\project277\one_class_svm_threshold_summary.txt
+
+Fixed nu            : 0.01
+Fixed gamma         : scale
+Best threshold pct : 90
+Best threshold     : -0.27106088
+Best Validation F1 : 0.4387
+Normal-only FAR     : 0.1001
+FAR constraint &lt;=15%: PASS
+
+Stage 17 used Validation only. Final Test was not used.
+Ready for Stage 18 One-Class SVM hyperparameter tuning.
+================================================================================
+</div></section><section><h2 class="ok">[18/31] 18_tune_ocsvm_hyperparameters.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+CIC-IDS2017 ONE-CLASS SVM BEHAVIOR MODEL
+================================================================================
+Validation integrity check : PASS (8,678 rows)
+
+Train rows       : 24,878
+Validation rows  : 8,678
+Features         : 5
+Train BENIGN     : 24,878
+Train ATTACK     : 0
+Validation BENIGN: 4,276
+Validation ATTACK: 4,402
+
+================================================================================
+ONE-CLASS SVM HYPERPARAMETER / THRESHOLD TUNING
+================================================================================
+Kernel                 : rbf
+nu candidates          : [0.001, 0.005, 0.01, 0.03, 0.05, 0.1]
+gamma candidates       : [&#x27;scale&#x27;, 0.001, 0.01, 0.1, 1.0]
+Threshold percentiles  : [20, 30, 40, 50, 60, 70, 75, 80, 85, 90, 92, 95, 97, 99]
+cache_size             : 4096 MB
+shrinking              : True
+train sample           : ALL
+Final Test             : NOT USED
+
+================================================================================
+RUNNING ONE-CLASS SVM HYPERPARAMETER SEARCH
+================================================================================
+Total OCSVM configurations: 30
+Fixed threshold percentile: 90
+Final Test             : NOT USED
+
+--------------------------------------------------------------------------------
+Configuration 1/30
+nu    = 0.001
+gamma = scale
+
+Threshold             : -0.01001172
+Validation Accuracy   : 0.4439
+Validation Precision  : 0.0093
+Validation Recall     : 0.0009
+Validation F1         : 0.0017
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 2/30
+nu    = 0.001
+gamma = 0.001
+
+Threshold             : -0.01055824
+Validation Accuracy   : 0.4450
+Validation Precision  : 0.0317
+Validation Recall     : 0.0032
+Validation F1         : 0.0058
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 3/30
+nu    = 0.001
+gamma = 0.01
+
+Threshold             : -0.01757360
+Validation Accuracy   : 0.4443
+Validation Precision  : 0.0183
+Validation Recall     : 0.0018
+Validation F1         : 0.0033
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 4/30
+nu    = 0.001
+gamma = 0.1
+
+Threshold             : -0.01470334
+Validation Accuracy   : 0.4439
+Validation Precision  : 0.0093
+Validation Recall     : 0.0009
+Validation F1         : 0.0017
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 5/30
+nu    = 0.001
+gamma = 1.0
+
+Threshold             : -0.00579285
+Validation Accuracy   : 0.5646
+Validation Precision  : 0.7108
+Validation Recall     : 0.2390
+Validation F1         : 0.3577
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 6/30
+nu    = 0.005
+gamma = scale
+
+Threshold             : -0.09167151
+Validation Accuracy   : 0.5213
+Validation Precision  : 0.6123
+Validation Recall     : 0.1536
+Validation F1         : 0.2456
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 7/30
+nu    = 0.005
+gamma = 0.001
+
+Threshold             : -0.03667345
+Validation Accuracy   : 0.4437
+Validation Precision  : 0.0047
+Validation Recall     : 0.0005
+Validation F1         : 0.0008
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 8/30
+nu    = 0.005
+gamma = 0.01
+
+Threshold             : -0.14134236
+Validation Accuracy   : 0.4435
+Validation Precision  : 0.0023
+Validation Recall     : 0.0002
+Validation F1         : 0.0004
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 9/30
+nu    = 0.005
+gamma = 0.1
+
+Threshold             : -0.13784095
+Validation Accuracy   : 0.4438
+Validation Precision  : 0.0070
+Validation Recall     : 0.0007
+Validation F1         : 0.0012
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 10/30
+nu    = 0.005
+gamma = 1.0
+
+Threshold             : -0.03622530
+Validation Accuracy   : 0.7136
+Validation Precision  : 0.8457
+Validation Recall     : 0.5327
+Validation F1         : 0.6537
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 11/30
+nu    = 0.01
+gamma = scale
+
+Threshold             : -0.27106088
+Validation Accuracy   : 0.5998
+Validation Precision  : 0.7602
+Validation Recall     : 0.3083
+Validation F1         : 0.4387
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 12/30
+nu    = 0.01
+gamma = 0.001
+
+Threshold             : -0.05737102
+Validation Accuracy   : 0.4435
+Validation Precision  : 0.0023
+Validation Recall     : 0.0002
+Validation F1         : 0.0004
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 13/30
+nu    = 0.01
+gamma = 0.01
+
+Threshold             : -0.25648601
+Validation Accuracy   : 0.4435
+Validation Precision  : 0.0023
+Validation Recall     : 0.0002
+Validation F1         : 0.0004
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 14/30
+nu    = 0.01
+gamma = 0.1
+
+Threshold             : -0.32462885
+Validation Accuracy   : 0.5130
+Validation Precision  : 0.5853
+Validation Recall     : 0.1372
+Validation F1         : 0.2223
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 15/30
+nu    = 0.01
+gamma = 1.0
+
+Threshold             : -0.08562342
+Validation Accuracy   : 0.7429
+Validation Precision  : 0.8586
+Validation Recall     : 0.5904
+Validation F1         : 0.6997
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 16/30
+nu    = 0.03
+gamma = scale
+
+Threshold             : -0.61099564
+Validation Accuracy   : 0.6309
+Validation Precision  : 0.7917
+Validation Recall     : 0.3696
+Validation F1         : 0.5039
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 17/30
+nu    = 0.03
+gamma = 0.001
+
+Threshold             : -0.10537741
+Validation Accuracy   : 0.4437
+Validation Precision  : 0.0047
+Validation Recall     : 0.0005
+Validation F1         : 0.0008
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 18/30
+nu    = 0.03
+gamma = 0.01
+
+Threshold             : -0.56509933
+Validation Accuracy   : 0.4437
+Validation Precision  : 0.0047
+Validation Recall     : 0.0005
+Validation F1         : 0.0008
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 19/30
+nu    = 0.03
+gamma = 0.1
+
+Threshold             : -0.74511190
+Validation Accuracy   : 0.6065
+Validation Precision  : 0.7678
+Validation Recall     : 0.3214
+Validation F1         : 0.4532
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 20/30
+nu    = 0.03
+gamma = 1.0
+
+Threshold             : -0.24180569
+Validation Accuracy   : 0.7760
+Validation Precision  : 0.8709
+Validation Recall     : 0.6556
+Validation F1         : 0.7481
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 21/30
+nu    = 0.05
+gamma = scale
+
+Threshold             : -0.62972281
+Validation Accuracy   : 0.6612
+Validation Precision  : 0.8154
+Validation Recall     : 0.4294
+Validation F1         : 0.5625
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 22/30
+nu    = 0.05
+gamma = 0.001
+
+Threshold             : -0.10612886
+Validation Accuracy   : 0.4448
+Validation Precision  : 0.0273
+Validation Recall     : 0.0027
+Validation F1         : 0.0050
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 23/30
+nu    = 0.05
+gamma = 0.01
+
+Threshold             : -0.72770737
+Validation Accuracy   : 0.4443
+Validation Precision  : 0.0183
+Validation Recall     : 0.0018
+Validation F1         : 0.0033
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 24/30
+nu    = 0.05
+gamma = 0.1
+
+Threshold             : -0.88632556
+Validation Accuracy   : 0.5133
+Validation Precision  : 0.5861
+Validation Recall     : 0.1377
+Validation F1         : 0.2230
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 25/30
+nu    = 0.05
+gamma = 1.0
+
+Threshold             : -0.11685107
+Validation Accuracy   : 0.7806
+Validation Precision  : 0.8724
+Validation Recall     : 0.6647
+Validation F1         : 0.7545
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 26/30
+nu    = 0.1
+gamma = scale
+
+Threshold             : 0.63662361
+Validation Accuracy   : 0.7229
+Validation Precision  : 0.8500
+Validation Recall     : 0.5509
+Validation F1         : 0.6685
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 27/30
+nu    = 0.1
+gamma = 0.001
+
+Threshold             : -0.07251426
+Validation Accuracy   : 0.6344
+Validation Precision  : 0.7947
+Validation Recall     : 0.3764
+Validation F1         : 0.5109
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 28/30
+nu    = 0.1
+gamma = 0.01
+
+Threshold             : -0.52836496
+Validation Accuracy   : 0.6378
+Validation Precision  : 0.7976
+Validation Recall     : 0.3832
+Validation F1         : 0.5177
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 29/30
+nu    = 0.1
+gamma = 0.1
+
+Threshold             : -0.47788303
+Validation Accuracy   : 0.6480
+Validation Precision  : 0.8057
+Validation Recall     : 0.4032
+Validation F1         : 0.5375
+Validation FPR        : 0.1001
+
+--------------------------------------------------------------------------------
+Configuration 30/30
+nu    = 0.1
+gamma = 1.0
+
+Threshold             : 8.40013137
+Validation Accuracy   : 0.7752
+Validation Precision  : 0.8706
+Validation Recall     : 0.6540
+Validation F1         : 0.7469
+Validation FPR        : 0.1001
+
+
+================================================================================
+BEST ONE-CLASS SVM CONFIGURATION
+================================================================================
+nu                    : 0.05
+gamma                 : 1.0
+threshold type        : percentile
+threshold percentile  : 90
+threshold             : -0.11685107
+
+Validation Accuracy   : 0.7806
+Validation Precision  : 0.8724
+Validation Recall     : 0.6647
+Validation F1         : 0.7545
+Validation FPR        : 0.1001
+Attack Detection Rate: 0.6647
+
+TN : 3,848
+FP : 428
+FN : 1,476
+TP : 2,926
+
+================================================================================
+TRAINING BEST VALIDATION OCSVM
+================================================================================
+nu    : 0.05
+gamma : 1.0
+
+Best validation model saved: D:\project277\one_class_svm_behavior_best_validation.pkl
+
+Best configuration saved: D:\project277\one_class_svm_best_config.json
+
+================================================================================
+ONE-CLASS SVM HYPERPARAMETER TUNING COMPLETE
+================================================================================
+Tuning result file : D:\project277\one_class_svm_hyperparameter_tuning_results.csv
+Best model file    : D:\project277\one_class_svm_behavior_best_validation.pkl
+Best config file   : D:\project277\one_class_svm_best_config.json
+Best score file    : D:\project277\one_class_svm_best_validation_scores.csv
+Summary file       : D:\project277\one_class_svm_hyperparameter_tuning_summary.txt
+
+Best nu            : 0.05
+Best gamma         : 1.0
+Best threshold pct : 90
+Best threshold     : -0.11685107
+Best Validation F1 : 0.7545
+
+Stage 17 used Validation only. Final Test was not used.
+Ready for Final One-Class SVM model training.
+================================================================================
+</div></section><section><h2 class="ok">[19/31] 19_final_ocsvm_model.py <span class="badge">OK</span></h2><div class="pre">=====================================================================================
+STAGE 19 — FINAL ONE-CLASS SVM MODEL
+=====================================================================================
+
+[DATA]
+  Train BENIGN      : 24,878
+  Validation        : 8,678
+  Final Test        : 9,277
+  Features          : 5
+
+[LOCKED CONFIGURATION — FROM VALIDATION]
+  kernel            : rbf
+  nu                : 0.05
+  gamma             : 1.0
+  threshold pct     : 90.0
+  threshold         : -0.11685107
+
+[FINAL MODEL]
+  Training data     : TRAIN BENIGN only
+  Final Test used for training   : NO
+  Final Test used for threshold  : NO
+  Model saved       : D:\project277\final_one_class_svm_behavior.pkl
+
+[FINAL TEST SCORING READY]
+  Test scores       : 9,277
+  Predicted Normal  : 7,483
+  Predicted Anomaly : 1,794
+
+[SAVED FILES]
+  D:\project277\final_one_class_svm_predictions.csv
+  D:\project277\final_one_class_svm_threshold.json
+  D:\project277\final_one_class_svm_train_scores.csv
+  D:\project277\final_one_class_svm_model_summary.txt
+=====================================================================================
+STAGE 19 FINAL ONE-CLASS SVM COMPLETE
+=====================================================================================
+</div></section><section><h2 class="ok">[20/31] 20_ocsvm_anomaly_score.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 20 — OCSVM FINAL TEST ANOMALY SCORE
+================================================================================
+Test rows       : 9,277
+Actual BENIGN   : 7,748
+Actual ATTACK   : 1,529
+Features        : 5
+Threshold       : -0.1168510743
+Threshold source: Validation
+Final Test used for tuning: NO
+Saved           : D:\project277\final_one_class_svm_anomaly_scores.csv
+================================================================================
+</div></section><section><h2 class="ok">[21/31] 21_ocsvm_risk_emotion.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 21 — OCSVM NETWORK RISK / EMOTION
+================================================================================
+Final Test rows : 9,277
+Validation rows : 8,678
+Risk P60        : -3.3390081722
+Risk P80        : -1.1893723208
+Risk P90        : -0.1168510743
+Risk P95        : 2.5974172409
+Validation BENIGN used for thresholds: 4,276
+Risk source     : VALIDATION BENIGN only
+Saved           : D:\project277\final_one_class_svm_risk_emotion.csv
+Saved thresholds: D:\project277\final_one_class_svm_risk_thresholds.json
+================================================================================
+</div></section><section><h2 class="ok">[22/31] 22_ocsvm_analysis.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 22 — FINAL ONE-CLASS SVM TEST ANALYSIS
+==========================================================================================
+Final Test rows : 9,277
+
+Metric                       Value
+----------------------------------
+accuracy                    0.9240
+precision                   0.7297
+recall                      0.8561
+f1                          0.7878
+overall_far                 0.0626
+normal_only_far             0.0626
+roc_auc                     0.9401
+pr_auc                      0.8563
+
+CONFUSION MATRIX
+                 Pred Normal   Pred Anomaly
+Actual BENIGN           7,263            485
+Actual ATTACK             220          1,309
+
+Final Test used only for evaluation: YES
+Final Test used for tuning        : NO
+Saved metrics : D:\project277\final_one_class_svm_final_metrics.csv
+Saved attack  : D:\project277\final_one_class_svm_attack_analysis.csv
+==========================================================================================
+</div></section><section><h2 class="ok">[23/31] 23_lof_baseline.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 23 — LOF BASELINE (VALIDATION ONLY)
+================================================================================
+Train rows       : 24,878
+Validation rows  : 8,678
+Features         : 5
+Train BENIGN     : 24,878
+Validation BENIGN: 4,276
+Validation ATTACK: 4,402
+
+PARAMETERS
+n_neighbors : 20
+contamination: 0.05
+metric      : minkowski
+novelty     : True
+native threshold: 0.0
+
+VALIDATION RESULT
+Accuracy  : 0.7037
+Precision : 0.8523
+Recall    : 0.5032
+F1 Score  : 0.6328
+FPR       : 0.0898
+
+Model saved : D:\project277\lof_behavior_baseline.pkl
+Scores saved: D:\project277\lof_baseline_validation_scores.csv
+Final Test used: NO
+================================================================================
+</div></section><section><h2 class="ok">[24/31] 24_tune_lof_threshold.py <span class="badge">OK</span></h2><div class="pre">=====================================================================================
+STAGE 24 — LOF THRESHOLD TUNING (VALIDATION ONLY)
+=====================================================================================
+Eligible thresholds : 6 / 15
+Best percentile     : 90
+Best threshold      : -0.0582536087
+Validation F1       : 0.6672
+Normal-only FAR     : 0.1001
+FAR constraint &lt;=15%: PASS
+Final Test used     : NO
+Saved results       : D:\project277\lof_threshold_tuning_results.csv
+Saved config        : D:\project277\lof_threshold_config.json
+=====================================================================================
+</div></section><section><h2 class="ok">[25/31] 25_tune_lof_hyperparameters.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 25 — LOF HYPERPARAMETER TUNING (VALIDATION ONLY)
+==========================================================================================
+Threshold percentile : 90
+Eligible configs     : 16 / 16
+
+Best n_neighbors     : 10
+Best contamination   : 0.005
+Threshold            : -1.7695554002
+Validation Precision : 0.8633
+Validation Recall    : 0.6143
+Validation F1        : 0.7178
+Validation FAR       : 0.1001
+FAR constraint       : PASS
+Final Test used      : NO
+Saved config         : D:\project277\lof_best_config.json
+==========================================================================================
+</div></section><section><h2 class="ok">[26/31] 26_final_lof_model.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 26 — FINAL LOF MODEL
+==========================================================================================
+Train BENIGN      : 24,878
+Final Test        : 9,277
+Features          : 5
+
+LOCKED CONFIGURATION
+n_neighbors       : 10
+contamination     : 0.005
+threshold pct     : 90.0
+threshold         : -1.7695554002
+
+Final Test used for training  : NO
+Final Test used for threshold : NO
+Model saved       : D:\project277\final_lof_model.pkl
+Predictions saved : D:\project277\final_lof_predictions.csv
+==========================================================================================
+</div></section><section><h2 class="ok">[27/31] 27_lof_anomaly_score.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 27 — LOF FINAL TEST ANOMALY SCORE
+================================================================================
+Final Test rows : 9,277
+BENIGN          : 7,748
+ATTACK          : 1,529
+Threshold       : -1.7695554002
+Threshold source: Validation
+Final Test used for tuning: NO
+Saved           : D:\project277\final_lof_anomaly_scores.csv
+================================================================================
+</div></section><section><h2 class="ok">[28/31] 28_lof_risk_emotion.py <span class="badge">OK</span></h2><div class="pre">================================================================================
+STAGE 28 — LOF NETWORK RISK / EMOTION
+================================================================================
+Final Test rows : 9,277
+Validation rows : 8,678
+Validation BENIGN used for thresholds: 4,276
+P60             : -1.9956061510
+P80             : -1.9047907367
+P90             : -1.7695554002
+P95             : -1.5151306826
+Source          : VALIDATION BENIGN only
+Final Test used for threshold: NO
+Saved           : D:\project277\final_lof_risk_emotion.csv
+Saved thresholds: D:\project277\final_lof_risk_thresholds.json
+================================================================================
+</div></section><section><h2 class="ok">[29/31] 29_lof_analysis.py <span class="badge">OK</span></h2><div class="pre">==========================================================================================
+STAGE 29 — FINAL LOF TEST ANALYSIS
+==========================================================================================
+Final Test rows : 9,277
+
+Metric                       Value
+----------------------------------
+accuracy                    0.9157
+precision                   0.7198
+recall                      0.7999
+f1                          0.7577
+overall_far                 0.0614
+normal_only_far             0.0614
+roc_auc                     0.9162
+pr_auc                      0.8053
+
+CONFUSION MATRIX
+                 Pred Normal   Pred Anomaly
+Actual BENIGN           7,272            476
+Actual ATTACK             306          1,223
+
+Final Test used only for evaluation: YES
+Final Test used for tuning        : NO
+Saved metrics : D:\project277\final_lof_final_metrics.csv
+Saved attack  : D:\project277\final_lof_attack_analysis.csv
+==========================================================================================
+</div></section><section><h2 class="ok">[30/31] 39_compare_three_models.py <span class="badge">OK</span></h2><div class="pre">====================================================================================================
+STAGE 39 — FINAL THREE-MODEL COMPARISON
+====================================================================================================
+
+Model                   Accuracy  Precision    Recall        F1       FAR   ROC-AUC    PR-AUC
+-------------------------------------------------------------------------------------------------------
+Isolation Forest          0.9049     0.7141    0.7057    0.7099    0.0558    0.9575    0.8027
+One-Class SVM             0.9240     0.7297    0.8561    0.7878    0.0626    0.9401    0.8563
+Local Outlier Factor      0.9157     0.7198    0.7999    0.7577    0.0614    0.9162    0.8053
+
+CONFUSION MATRICES
+Isolation Forest       TN=7,316  FP=432  FN=450  TP=1,079
+One-Class SVM          TN=7,263  FP=485  FN=220  TP=1,309
+Local Outlier Factor   TN=7,272  FP=476  FN=306  TP=1,223
+
+Final Test used only for evaluation: YES
+Final Test used for tuning/retraining: NO
+Saved CSV     : D:\project277\final_three_model_comparison.csv
+Saved Summary : D:\project277\final_three_model_comparison_summary.txt
+Saved Chart   : D:\project277\final_three_model_metrics.png
+====================================================================================================
+</div></section><section><h2 class="ok">[31/31] 40_statistical_threshold_cic.py <span class="badge">OK</span></h2><div class="pre">====================================================================================================
+STAGE 40 — CIC-IDS2017 STATISTICAL THRESHOLD
+====================================================================================================
+
+Train rows      : 24,878
+Validation rows : 8,678
+Final Test rows : 9,277
+Features used   : 5
+
+FEATURES
+  - request_rate
+  - throughput
+  - avg_latency
+  - max_latency
+  - latency_std_dev
+
+====================================================================================================
+BUILD ROBUST STATISTICAL REFERENCE
+====================================================================================================
+Train score range      : 0.03312183 - 137709.40874717
+Validation score range : 0.09812996 - 37875.49012133
+Final Test score range : 0.05901295 - 742361.24618792
+
+====================================================================================================
+VALIDATION — STATISTICAL THRESHOLD TUNING
+====================================================================================================
+P90  | threshold=20.39733690 | Precision=0.8192 | Recall=0.3912 | F1=0.5295 | FAR=0.0889
+P92  | threshold=32.03103225 | Precision=0.8597 | Recall=0.3912 | F1=0.5377 | FAR=0.0657
+P95  | threshold=77.96656089 | Precision=0.9223 | Recall=0.3912 | F1=0.5494 | FAR=0.0339
+P97  | threshold=11569.67063439 | Precision=0.9988 | Recall=0.3823 | F1=0.5530 | FAR=0.0005
+P99  | threshold=27570.99512413 | Precision=0.0000 | Recall=0.0000 | F1=0.0000 | FAR=0.0002
+
+====================================================================================================
+SELECTED CONFIGURATION
+====================================================================================================
+Selected percentile : P97
+Locked threshold    : 11569.6706343868
+Validation F1       : 0.5530
+
+====================================================================================================
+FINAL TEST — STATISTICAL THRESHOLD
+====================================================================================================
+Accuracy   : 0.8366
+Precision  : 0.7600
+Recall     : 0.0124
+F1         : 0.0245
+Overall FAR: 0.0008
+ROC-AUC    : 0.9043
+PR-AUC     : 0.6182
+
+CONFUSION MATRIX
+TN=7,742, FP=6, FN=1,510, TP=19
+
+====================================================================================================
+STAGE 40 COMPLETED
+====================================================================================================
+
+Created files:
+  statistical_threshold_validation.csv
+  statistical_threshold_final_predictions.csv
+  statistical_threshold_final_metrics.json
+  statistical_threshold_final_summary.txt
+  statistical_threshold_config.json
+  statistical_threshold_scores.csv
+
+Final Test was used ONLY for final evaluation.
+</div></section>
+</div>
+</body>
+</html>
